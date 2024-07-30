@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Restaurants</title>
+</head>
+<body>
+    <header>
+        <h1>Restaurants</h1>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Search by ID or Name..." value="<%= query || '' %>">
+            <input type="text" name="cuisine" placeholder="Cuisine..." value="<%= cuisine || '' %>">
+            <input type="number" name="average_spend" placeholder="Average Spend for two people..." value="<%= averageSpend || '' %>">
+            <input type="text" name="city" placeholder="City..." value="<%= city || '' %>">
+            <button type="submit">Search</button>
+        </form>
+        
+    </header>
+    <main>
+        <div class="restaurant-list">
+            <% if (restaurants.length > 0) { %>
+                <% restaurants.forEach(restaurant => { %>
+                    <div class="restaurant">
+                        <% if (restaurant.restaurant.featured_image) { %>
+                            <img src="<%= restaurant.restaurant.featured_image %>" alt="<%= restaurant.restaurant.name %>">
+                        <% } else { %>
+                            <p>No image available</p>
+                        <% } %>
+                        <h2><a href="/restaurant/<%= restaurant.restaurant.id %>"><%= restaurant.restaurant.name %></a></h2>
+                        <p><%= restaurant.restaurant.location.address %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No results found.</p>
+            <% } %>
+        </div>
+
+        <div id="pagination-controls">
+            <% for (let i = 1; i <= totalPages && i <= 10; i++) { %>
+                <a href="/search?query=<%= query %>&cuisine=<%= cuisine %>&average_spend=<%= averageSpend %>&page=<%= i %>" class="page-button <%= i === page ? 'active' : '' %>"><%= i %></a>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>
