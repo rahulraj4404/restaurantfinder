@@ -98,6 +98,7 @@ app.get('/', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const { restaurants, totalPages } = await fetchRestaurants(query, cuisine, averageSpend, city, page);
     res.render('index', { restaurants, query, cuisine, averageSpend, city, page, totalPages });
+    //res.json(restaurants);  // for web api service where json data is loaded
 });
 
 app.get('/search', async (req, res) => {
@@ -109,6 +110,7 @@ app.get('/search', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const { restaurants, totalPages } = await fetchRestaurants(query, cuisine, averageSpend, city, page);
     res.render('index', { restaurants, query, cuisine, averageSpend, city, page, totalPages });
+    //res.json(restaurants);  
 });
 
 app.get('/restaurant/:id', async (req, res) => {
@@ -118,6 +120,7 @@ app.get('/restaurant/:id', async (req, res) => {
         return res.status(404).send('Restaurant not found');
     }
     res.render('restaurant', { restaurant });
+    //res.json(restaurant); // for printing in json format
 });
 
 app.listen(port, () => {
