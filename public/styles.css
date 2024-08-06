@@ -67,7 +67,11 @@ header {
     padding: 20px 0;
     margin-bottom: 20px;
 }
-
+.rating{
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+}
 
 main {
     max-width: 1200px;

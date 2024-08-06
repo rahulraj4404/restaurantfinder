@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>Restaurants</h1>
+        <h1>Zomato</h1>
         <form action="/search" method="get" class="search-form">
             <input type="text" name="query" placeholder="Search by ID or Name..." value="<%= query || '' %>">
             <input type="text" name="cuisine" placeholder="Cuisine..." value="<%= cuisine || '' %>">
@@ -18,7 +18,6 @@
             <input type="text" name="city" placeholder="City..." value="<%= city || '' %>">
             <button type="submit">Search</button>
         </form>
-        
     </header>
     <main>
         <div class="restaurant-list">
@@ -44,6 +43,7 @@
                 <a href="/search?query=<%= query %>&cuisine=<%= cuisine %>&average_spend=<%= averageSpend %>&page=<%= i %>" class="page-button <%= i === page ? 'active' : '' %>"><%= i %></a>
             <% } %>
         </div>
+        
     </main>
 </body>
 </html>

@@ -1,6 +1,5 @@
 const { MongoClient } = require('mongodb');
 
-// Use your local MongoDB connection string
 const uri = 'mongodb://localhost:27017';
 const client = new MongoClient(uri);
 
@@ -9,15 +8,14 @@ async function run() {
         await client.connect();
         console.log('Connected to MongoDB');
 
-        const db = client.db('zoma'); // Use your actual database name
-        const collection = db.collection('resto'); // Use your actual collection name
-
-        // Fetch all documents to inspect
+        const db = client.db('zoma'); 
+        const collection = db.collection('resto');
+        
         const allDocs = await collection.find().toArray();
-        console.log('All documents:', JSON.stringify(allDocs, null, 2)); // Print in a readable format
+        console.log('All documents:', JSON.stringify(allDocs, null, 2)); 
 
-        // Test with a known value
-        const searchQuery = { 'restaurant.name': /Chili's/i }; // Update this query to match your data
+       
+        const searchQuery = { 'restaurant.name': /Chili's/i }; 
         const searchResults = await collection.find(searchQuery).toArray();
         console.log('Search results:', searchResults);
 

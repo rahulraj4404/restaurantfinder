@@ -2,7 +2,6 @@ const { MongoClient } = require("mongodb");
 const fs = require("fs");
 const path = require("path");
 
-// Configuration
 const JSON_DIR_PATH = "./data_files"; 
 const MONGO_URI = "mongodb://localhost:27017"; 
 const DATABASE_NAME = "zoma"; 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +58,31 @@
         <% } else { %>
             <p>No events available</p>
         <% } %>
-        
+        <h2>Reviews:</h2>
+        <div class="rating">
+            <% if (restaurant.reviews && restaurant.reviews.length > 0) { %>
+                <% restaurant.reviews.forEach(review => { %>
+                    <div class="review">
+                        <p><strong>Username:</strong> <%= review.username %></p>
+                        <p><strong>Rating:</strong> <%= review.rating %></p><p>/5</p>
+                        <p><strong>Review:</strong> <%= review.review %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No reviews yet.</p>
+            <% } %>    
+        </div>
+        <h2>Submit a Review:</h2>
+        <form action="/submitreview" method="POST" class="search-form">
+            <input type="hidden" name="restaurant_id" value="<%= restaurant.restaurant.id %>">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="rating">Rating:(out of 5)</label>
+            <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" required>
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" rows="4" required></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
         <a href="/">Back to list</a>
     <% } else { %>
         <p>Restaurant details not available.</p>
