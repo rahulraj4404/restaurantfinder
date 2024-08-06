@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +57,7 @@
         <% } else { %>
             <p>No events available</p>
         <% } %>
+        
         <h2>Reviews:</h2>
         <div class="rating">
             <% if (restaurant.reviews && restaurant.reviews.length > 0) { %>
@@ -72,8 +72,9 @@
                 <p>No reviews yet.</p>
             <% } %>    
         </div>
+
         <h2>Submit a Review:</h2>
-        <form action="/submitreview" method="POST" class="search-form">
+        <form action="/submit-review" method="POST" class="search-form">
             <input type="hidden" name="restaurant_id" value="<%= restaurant.restaurant.id %>">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
