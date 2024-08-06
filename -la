@@ -1,0 +1,64 @@
+[33mcommit 7a0ef50f478765754eaf5ffb71c4e3dd2a367fe7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: d5c0e8b 725216b
+Author: metta rahul raj <rahulrajmetta004@gmail.com>
+Date:   Tue Aug 6 19:22:54 2024 +0530
+
+    Resolve merge conflicts
+
+[33mcommit d5c0e8b34ce443262707a058b14670af9bed6644[m
+Author: metta rahul raj <rahulrajmetta004@gmail.com>
+Date:   Tue Aug 6 19:13:04 2024 +0530
+
+    Add .gitattributes for line ending management
+
+[33mcommit 725216b84545b1e18f83e35181efd4858c7270f0[m
+Author: metta rahul raj <142306268+rahulraj4404@users.noreply.github.com>
+Date:   Thu Aug 1 00:29:11 2024 +0530
+
+    Update restaurant.ejs
+
+[33mcommit a99c524cfd6a87329f19f832873365fb40a3965f[m
+Author: metta rahul raj <142306268+rahulraj4404@users.noreply.github.com>
+Date:   Thu Aug 1 00:28:39 2024 +0530
+
+    Update app.js
+
+[33mcommit 61474490a69510cf772d30a1f958d25caedd6b06[m
+Author: metta rahul raj <142306268+rahulraj4404@users.noreply.github.com>
+Date:   Tue Jul 30 14:51:44 2024 +0530
+
+    Update app.js
+
+[33mcommit c3b1a9bd83bdbd108992b7e79129a98916edcc5e[m
+Author: metta rahul raj <142306268+rahulraj4404@users.noreply.github.com>
+Date:   Tue Jul 30 14:45:51 2024 +0530
+
+    Delete node_modules directory
+
+[33mcommit 7c481cca0f1956d33aa579455973d04296124a01[m
+Merge: 7107649 a6f7402
+Author: metta rahul raj <rahulrajmetta004@gmail.com>
+Date:   Tue Jul 30 10:01:08 2024 +0530
+
+    gerge branch 'main' of https://github.com/e42-typeface-ai/anits-assign-rahulraj4404
+    Merge branch 'main' of
+    https://github.com/e42-typeface-ai/anits-assign-rahulraj4494 into main
+    Allowing unrelated histories to merge the local and remote main branches
+
+[33mcommit 7107649b4c0b81e376d06e7dd21117d59f1827fe[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: metta rahul raj <rahulrajmetta004@gmail.com>
+Date:   Tue Jul 30 09:50:06 2024 +0530
+
+    Initial commit
+
+[33mcommit a6f7402ed0ae7ae959023669998f1bd88f4bdd5b[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Sun Jul 28 08:49:32 2024 +0000
+
+    add deadline
+
+[33mcommit 31a6284736adc5334f62a6eb41f0278907b22f1e[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Sun Jul 28 05:47:24 2024 +0000
+
+    Initial commit
