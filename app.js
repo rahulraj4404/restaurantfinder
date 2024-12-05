@@ -346,7 +346,7 @@ const path = require('path');
 
 const app = express();
 const port = 5001;
-
+const { performance } = require('perf_hooks');
 const mongoUri = 'mongodb://localhost:27017';
 const dbName = 'zoma';
 const collectionName = 'resto';
@@ -374,6 +374,7 @@ app.use(express.urlencoded({ extended: true }));
 
 async function fetchRestaurants(query = '', cuisine = '', averageSpend = '', city = '', page = 1, pageSize = 15) {
     try {
+      
         const collection = db.collection(collectionName);
 
         let searchQuery = {};
@@ -417,12 +418,36 @@ async function fetchRestaurants(query = '', cuisine = '', averageSpend = '', cit
         return { restaurants: [], totalPages: 0 };
     }
 }
-
+const restaurant_memcache = new Map();
+const maxsize = 50;
 async function fetchRestaurantById(id) {
-    try {
-        const collection = db.collection(collectionName);
-        const restaurant = await collection.findOne({ 'restaurant.id': id });
-        console.log('Fetched restaurant by ID:', restaurant);
+  try {
+        let startTime, endTime;
+
+        // Check in cache
+        startTime = performance.now();
+        if (restaurant_memcache.has(id)) {
+            const restaurant = restaurant_memcache.get(id);
+            restaurant_memcache.delete(id); // Refresh LRU
+            restaurant_memcache.set(id, restaurant);
+            endTime = performance.now();
+            console.log(`Cache retrieval time: ${(endTime - startTime).toFixed(2)} ms`);
+            return restaurant;
+        }
+      startTime = performance.now();
+      const collection = db.collection(collectionName);
+      const restaurant = await collection.findOne({ 'restaurant.id': id });
+      endTime = performance.now();
+      console.log(`Database retrieval time: ${(endTime - startTime).toFixed(2)} ms`);
+
+
+      if (restaurant) {
+            if (restaurant_memcache.size >= maxsize) {
+                const firstKey = restaurant_memcache.keys().next().value;
+                restaurant_memcache.delete(firstKey);
+            }
+            restaurant_memcache.set(id, restaurant);
+        }console.log('Fetched restaurant by ID:', restaurant);
         return restaurant;
     } catch (err) {
         console.error(`Failed to fetch data: ${err}`);
